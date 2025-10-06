@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+jinja2
+google-generativeai
+PyPDF2
+python-docx
+transformers
+torch
+google
+uuid 
+dotenv
+docx
+io
+os
