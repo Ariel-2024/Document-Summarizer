@@ -9,4 +9,3 @@ torch
 google
 python-dotenv
 docx
-
