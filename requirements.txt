@@ -7,3 +7,4 @@ google
 python-dotenv
 docx
 google-genai
+python-multipart
