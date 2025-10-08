@@ -1,12 +1,10 @@
 fastapi
 uvicorn
 jinja2
-google-generativeai
 PyPDF2
 python-docx
-transformers
-torch
 google
 python-dotenv
 docx
-
+google-genai
+python-multipart
