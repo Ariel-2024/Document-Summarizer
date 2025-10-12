@@ -12,10 +12,10 @@ from google import genai
 # Load environment variables
 load_dotenv()
 
-# ✅ Create FastAPI app
+
 app = FastAPI()
 
-# ✅ Enable CORS (Frontend ↔ Backend connection)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -24,10 +24,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ Configure the Gemini Client
+
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-# ✅ Setup Jinja2 templates for frontend
+
 Template = Jinja2Templates(directory="Template")
 
 
@@ -42,7 +42,7 @@ def ping():
     return {"message": "ping"}
 
 
-# ✅ Store uploaded documents in memory
+#  Store uploaded documents in memory
 documents = {}
 
 
@@ -94,7 +94,7 @@ async def get_document(doc_id: str):
     return {"doc_id": doc_id, "filename": doc["filename"], "text": doc["text"]}
 
 
-# ✅ Helper function: chunk text
+#  chunk text
 def chunk_text(text, max_tokens=3000):
     """Split text into smaller chunks for long document summaries."""
     words = text.split()
@@ -103,7 +103,7 @@ def chunk_text(text, max_tokens=3000):
         yield " ".join(words[i:i + max_words_per_chunk])
 
 
-# ✅ Document Summarization Route
+# Document Summarization Route
 @app.get("/summary/{doc_id}")
 async def summarize_document(doc_id: str):
     doc = documents.get(doc_id)
@@ -150,7 +150,7 @@ async def summarize_document(doc_id: str):
         return {"error": f"Failed to generate summary: {str(e)}"}
 
 
-# ✅ Document Question Answering Route
+# Document Question Answering Route
 @app.post("/query/{doc_id}")
 async def query_document(doc_id: str, question: dict):
     doc = documents.get(doc_id)
