@@ -28,12 +28,16 @@ app.add_middleware(
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
-Template = Jinja2Templates(directory="Template")
+templates = Jinja2Templates(directory="templates")
 
-
-@app.get("/", response_class=HTMLResponse)
+@app.get("/")
 async def serve_frontend(request: Request):
-    return Template.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request})
+
+
+@app.get("/welcome", response_class=HTMLResponse)
+async def welcome(request: Request):
+    return templates.TemplateResponse("welcome.html", {"request": request})
 
 
 # Test route
